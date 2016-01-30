@@ -67,11 +67,13 @@
 }
 
 .nav-item li span {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 22px;
     height: 22px;
 }
-
+.underline{
+    border-bottom: 2px solid #fff;
+}
 .nav-item:hover {
     background-color: #5FABF0;
 }
@@ -83,6 +85,7 @@
     min-width: 320px;
     position: relative;
     padding: 10px;
+    overflow: hidden;
 }
 
 .banner {
@@ -162,7 +165,9 @@
 	bottom: 10px;
 }
 
-
+.hide{
+    display: none;
+}
 
 
 

@@ -1,8 +1,9 @@
 <?php
 	header("Content-Type: text/html;charset=utf-8");
 	require_once('usercfg.php');
-	$_GET['name']='recommend';
-	selectData();
+	$newstype = $_POST['name'];
+	// $newstype ="recommend";
+	selectData($newstype);
 	/**
 	 * 连接到数据库
 	 * @return 字符串 表示连接成功
@@ -15,18 +16,17 @@
   			die('Could not connect to DB' . mysql_error());
   		}
 	}
-
-	function selectData(){
+	//从数据库加载特定类型的数据
+	function selectData($type){
 		connectDB();
-		mysql_query("set names 'utf8'");
+		mysql_query("set names utf8");
 		mysql_select_db("BaiduNews", $GLOBALS['con']);
-		$result = mysql_query("SELECT * FROM news WHERE newstype=$_GET['name']");
-		while($row = mysql_fetch_array($result))
+		$result = mysql_query("SELECT * FROM news WHERE newstype='$type'");
+		while($row = mysql_fetch_row($result))
   		{
-			echo $row['newstitle'];
-			echo "<br/>";
+			$return[] = array('newsid'=>$row[0],'newstitle'=>$row[1],'newslink'=>$row[2],'newsimg'=>$row[3],'newscontent'=>$row[4],'newstype'=>$row[5],'addtime'=>$row[6]);			
   		}
-
+  		echo json_encode($return);
   		mysql_close($GLOBALS['con']);
 	}
 ?>
