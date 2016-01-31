@@ -5,6 +5,8 @@ $(function() {
     switchNews();//点击导航标签之后更滑新闻流的内容
     showBanner();//部分类别的页面下展示Banner板块
 });
+
+//百度新闻前端页面 开始
 /**
  * 鼠标点击导航事件
  */
@@ -102,3 +104,4 @@ function addNews(data) {
     var newstitlr = $('<h2>').text(data.newstitle).appendTo(newscontent);
     var addtime = $('<span>').text(data.addtime).appendTo(newscontent);
 }
+//百度新闻前端页面  结束

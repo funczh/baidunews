@@ -20,7 +20,7 @@
 	function selectData($type){
 		connectDB();
 		mysql_query("set names utf8");
-		mysql_select_db("BaiduNews", $GLOBALS['con']);
+		mysql_select_db("baidunews", $GLOBALS['con']);
 		$result = mysql_query("SELECT * FROM news WHERE newstype='$type'");
 		while($row = mysql_fetch_row($result))
   		{
